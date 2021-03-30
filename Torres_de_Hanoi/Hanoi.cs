@@ -39,10 +39,9 @@ namespace Torres_de_Hanoi
                     b.push(a.pop());
                 }
             }
-            //}
         }
 
-        public static int iterativo(int n, Pila ini, Pila fin, Pila aux)
+        public static int algoritmoIterativo(int n, Pila ini, Pila fin, Pila aux)
         {
             int m = 0;
             bool gameStatus = false;
