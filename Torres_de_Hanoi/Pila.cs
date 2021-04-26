@@ -103,14 +103,20 @@ namespace Torres_de_Hanoi
             return false;
         }
 
-        public void rellenarPila(int n)
+        public bool rellenarPila(int n)
         {
-            for (int i = 0; i < n; i++)
+            if (n != 0)
             {
-                Disco disco = new Disco();
-                disco.Valor = i;
-                this.push(disco);
+                for (int i = 0; i < n; i++)
+                {
+                    Disco disco = new Disco();
+                    disco.Valor = i;
+                    this.push(disco);
+                }
+                return true;
             }
+
+            return false;
         }
 
     }

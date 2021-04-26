@@ -16,11 +16,19 @@ namespace Torres_de_Hanoi
 
             // Keep the console window open in debug mode.
             Console.WriteLine("Bienvenido al juego de Hanoi, ¿Cuantos discos vas a utilizar?");
-            int numDiscos = Convert.ToInt32(Console.ReadLine());
+            int numDiscos = 0;
+            while (numDiscos <= 0)
+            {
+                numDiscos = Convert.ToInt32(Console.ReadLine());
+                if (numDiscos <= 0)
+                {
+                    Console.WriteLine("Introduce un numero valido, debe ser mayor que 0");
+                }
+            }
             int resolverNum = Convert.ToInt32(Math.Pow(2, numDiscos) - 1);
             Console.WriteLine("El numero de movimientos dada la formula matemática (2^n)-1 => " + resolverNum);
             Pila pilaIni = new Pila();
-            pilaIni.rellenarPila(numDiscos);
+            Boolean isPila = pilaIni.rellenarPila(numDiscos);
             Pila pilaAux = new Pila();
             Pila pilaFin = new Pila();
             Console.WriteLine("El numero de movimientos segun el algoritmo iterativo -> " + Hanoi.algoritmoIterativo(numDiscos, pilaIni, pilaAux, pilaFin));

@@ -99,21 +99,28 @@ namespace Torres_de_Hanoi
 
         public static int algoritmoRecursivoHanoi(int n, Pila ini, Pila fin, Pila aux)
         {
-            //llamara a iterativo
-            if (n == 1)
+            try
             {
-                m++;
-                mover_disco(ini, fin);
-            }
-            else
+                //llamara a iterativo
+                if (n == 1)
+                {
+                    m++;
+                    mover_disco(ini, fin);
+                }
+                else
+                {
+                    algoritmoRecursivoHanoi(n - 1, ini, aux, fin);
+                    m++;
+                    mover_disco(ini, fin);
+                    algoritmoRecursivoHanoi(n - 1, aux, fin, ini);
+                }
+
+                return m;
+            } catch (System.StackOverflowException e)
             {
-                algoritmoRecursivoHanoi(n-1, ini, aux, fin);
-                m++;
-                mover_disco(ini, fin);
-                algoritmoRecursivoHanoi(n-1, aux, fin, ini);
+                Console.WriteLine("No puede jugarse con 0 discos", e.Source);
+                return 0;
             }
-            
-            return m;
         }
 
         public static void rellenarPilaIni(Pila pilaIni, int n)
